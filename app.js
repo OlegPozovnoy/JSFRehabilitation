@@ -14,5 +14,5 @@ app.get(`/greeting`, (req, res) => {
   res.send(`Hey 'dere world!`);
 });
 // Starting our server on port 4000
-let port = process.env.port || 4000;
+let port = process.env.PORT || 4000;
 app.listen(port, () => console.log(`Listening on ${port}`));
