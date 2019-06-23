@@ -29,16 +29,16 @@ const mongoose = require("mongoose");
 mongoose
   .connect(process.env.DB_URI, {
     auth: {
-      user: process.env.USERNAME,
-      password: process.env.PASSWORD
+      user: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD
     },
     useNewUrlParser: true
   })
   .catch(err => console.error(`ERROR: ${err}`));
 
-//console.log(process.env.DB_USERNAME);
-//console.log(process.env.DB_PASSWORD);
-//console.log(process.env.DB_URI);
+console.log(process.env.DB_USERNAME);
+console.log(process.env.DB_PASSWORD);
+console.log(process.env.DB_URI);
 
 const routes = require("./routes.js");
 app.use("/", routes);
