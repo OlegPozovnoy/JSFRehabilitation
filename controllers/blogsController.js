@@ -6,16 +6,6 @@ exports.new = (req, res) => {
   });
 };
 
-exports.create = (req, res) => {
-  Blog.create(req.body.blog)
-    .then(() => {
-      res.redirect("/blogs");
-    })
-    .catch(err => {
-      console.error(`ERROR: ${err}`);
-    });
-};
-
 exports.index = (req, res) => {
   Blog.find()
     .then(blogs => {
@@ -83,6 +73,18 @@ exports.edit = (req, res) => {
     });
 };
 
+exports.create = (req, res) => {
+  Blog.create(req.body.blog)
+    .then(() => {
+      req.flash("success", "New blog was created successfully.");
+      res.redirect("/blogs");
+    })
+    .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
+      console.error(`ERROR: ${err}`);
+    });
+};
+
 exports.update = (req, res) => {
   Blog.updateOne(
     {
@@ -94,21 +96,26 @@ exports.update = (req, res) => {
     }
   )
     .then(() => {
+      req.flash("success", "The blog was updated successfully.");
       res.redirect("/blogs");
     })
     .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
       console.error(`ERROR: ${err}`);
     });
 };
 
 exports.destroy = (req, res) => {
-  Blog.deleteOne({
-    _id: req.body.id
-  })
+  //console.log(req.body);
+  //console.log("id:" + req.body.blog.id);
+  Blog.findByIdAndDelete(req.body.blog.id)
     .then(() => {
+      // console.log(req.body._id);
+      req.flash("success", "The blog was deleted successfully.");
       res.redirect("/blogs");
     })
     .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
       console.error(`ERROR: ${err}`);
     });
 };

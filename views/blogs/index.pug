@@ -18,6 +18,6 @@ block content
                 td
                   a(href=`/blogs/${blog.id}/edit`) edit
                   = ` | `
-                  form.destroy(action=`/blogs/${blog.id}/destroy`, method="POST")
+                  form.destroy(action=`/blogs/destroy`, method="POST")
                     input(type="hidden", name="blog[id]", value=`${blog.id}`)
                     input.destroy(type="submit", value="destroy")

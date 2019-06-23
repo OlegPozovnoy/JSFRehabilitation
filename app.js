@@ -5,7 +5,27 @@ const app = express();
 // Creating our first route which is looking for requests
 
 const path = require("path");
+const session = require("express-session");
+const flash = require("connect-flash");
 
+app.use(
+  session({
+    secret: process.env.secret || "boorakacha",
+    cookie: {
+      maxAge: 10800000
+    },
+    resave: true,
+    saveUninitialized: true
+  })
+);
+
+app.use(flash());
+app.use((req, res, next) => {
+  res.locals.flash = res.locals.flash || {};
+  res.locals.flash.success = req.flash("success") || null;
+  res.locals.flash.error = req.flash("error") || null;
+  next();
+});
 // Body parser which will make reading request bodies MUCH easier
 const bodyParser = require("body-parser");
 app.use(bodyParser.json());
