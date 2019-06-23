@@ -1,0 +1,9 @@
+extends ../layouts/main.pug
+block content
+  .container
+    header
+      h1= song.title
+      small= song.status.toLowerCase()
+
+    div
+      = song.content || "Your story is processing..."

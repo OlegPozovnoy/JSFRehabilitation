@@ -10,14 +10,14 @@ block content
             th Title
             th Status
           tbody
-            each blog in blogs
+            each song in songs
               tr
                 td
-                  a(href=`/blogs/${blog.id}`)= blog.title
-                td= blog.status
+                  a(href=`/songs/${song.id}`)= song.title
+                td= song.status
                 td
-                  a(href=`/blogs/${blog.id}/edit`) edit
+                  a(href=`/songs/${song.id}/edit`) edit
                   = ` | `
-                  form.destroy(action=`/blogs/destroy`, method="POST")
-                    input(type="hidden", name="blog[id]", value=`${blog.id}`)
+                  form.destroy(action=`/songs/destroy`, method="POST")
+                    input(type="hidden", name="song[id]", value=`${song.id}`)
                     input.destroy(type="submit", value="destroy")

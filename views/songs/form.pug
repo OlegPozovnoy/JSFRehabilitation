@@ -1,0 +1,22 @@
+form(action=(song ? `/songs/update` : "/songs"), method="POST")
+  if song
+    input(type="hidden", name="id", value=song.id)
+
+  .form-group
+    label Title
+    input.form-control(name="song[title]", required, value=(song ? song.title : null))
+  
+  .form-group
+    label Content
+    textarea.form-control(name="song[content]")
+      = song ? song.title : null
+  
+  .form-group
+    label Status
+    select.form-control(name="song[status]", required)
+      each status in ['DRAFT', 'PUBLISHED']
+        option(value=status, selected=(song && song.status === status ? true : false))= status.toLowerCase()
+
+  .form-group
+    button.btn.btn-dark(type="submit") Submit
+
