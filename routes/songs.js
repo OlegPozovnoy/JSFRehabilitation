@@ -1,16 +1,16 @@
 // Our router module
 const router = require("express").Router();
 // Our controller
-const BlogsController = require("../controllers/blogsController");
+const SongsController = require("../controllers/songsController");
 // Our routes
-router.get(`/`, BlogsController.index);
-router.get(`/new`, BlogsController.new);
+router.get(`/`, SongsController.index);
+router.get(`/new`, SongsController.new);
 
-router.get(`/:id/edit`, BlogsController.edit);
-router.get(`/:id`, BlogsController.show);
+router.get(`/:id/edit`, SongsController.edit);
+router.get(`/:id`, SongsController.show);
 
-router.post(`/`, BlogsController.create);
-router.post(`/update`, BlogsController.update);
-router.post(`/destroy`, BlogsController.destroy);
+router.post(`/`, SongsController.create);
+router.post(`/update`, SongsController.update);
+router.post(`/destroy`, SongsController.destroy);
 // We have to export our changes
 module.exports = router;
