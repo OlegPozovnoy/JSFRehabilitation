@@ -6,5 +6,5 @@ const blogRoutes = require("./routes/blogs");
 //console.log("routes.js:");
 //console.log(pageRoutes);
 app.use("/", pageRoutes);
-app.use("/blogs", pageRoutes);
+app.use("/blogs", blogRoutes);
 module.exports = app;
