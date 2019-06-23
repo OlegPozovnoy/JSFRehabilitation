@@ -6,6 +6,15 @@ const app = express();
 
 const path = require("path");
 
+// Body parser which will make reading request bodies MUCH easier
+const bodyParser = require("body-parser");
+app.use(bodyParser.json());
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+);
+
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
@@ -17,7 +26,7 @@ app.use("/images", express.static("assets/images"));
 require("dotenv").config();
 // Connecting to MongoDB cluster with Mongoose
 const mongoose = require("mongoose");
-/*mongoose
+mongoose
   .connect(process.env.DB_URI, {
     auth: {
       user: process.env.USERNAME,
@@ -26,10 +35,10 @@ const mongoose = require("mongoose");
     useNewUrlParser: true
   })
   .catch(err => console.error(`ERROR: ${err}`));
-*/
-console.log(process.env.DB_USERNAME);
-console.log(process.env.DB_PASSWORD);
-console.log(process.env.DB_URI);
+
+//console.log(process.env.DB_USERNAME);
+//console.log(process.env.DB_PASSWORD);
+//console.log(process.env.DB_URI);
 
 const routes = require("./routes.js");
 app.use("/", routes);
