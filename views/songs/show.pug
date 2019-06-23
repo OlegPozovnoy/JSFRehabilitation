@@ -2,8 +2,24 @@ extends ../layouts/main.pug
 block content
   .container
     header
-      h1= song.title
+      h1= song.name
       small= song.status.toLowerCase()
 
     div
-      = song.content || "Your story is processing..."
+      table.table.table-striped
+        tbody
+          tr
+            td  Band
+            td= song.band
+          tr
+            td  Album
+            td= song.album
+          tr
+            td  Year
+            td= song.year
+          tr
+            td  Genre
+            td= song.genre
+          tr
+            td  Length
+            td= song.length

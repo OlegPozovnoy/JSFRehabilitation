@@ -7,14 +7,22 @@ block content
       table.table.table-striped
         thead
           tr
-            th Title
-            th Status
+            th Name
+            th Band
+            th Album
+            th Year
+            th Genre
+            th Length
           tbody
             each song in songs
               tr
                 td
-                  a(href=`/songs/${song.id}`)= song.title
-                td= song.status
+                  a(href=`/songs/${song.id}`)= song.name
+                td= song.band
+                td= song.album
+                td= song.year
+                td= song.genre
+                td= song.length
                 td
                   a(href=`/songs/${song.id}/edit`) edit
                   = ` | `

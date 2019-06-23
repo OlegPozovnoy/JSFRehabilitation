@@ -3,18 +3,39 @@ const mongoose = require(`mongoose`);
 // Our schema
 const SongSchema = new mongoose.Schema(
   {
-    title: {
+    name: {
       type: String,
       required: true // we will require a title for our blog
     },
-    content: {
+    band: {
       type: String,
-      required: false
+      required: true
     },
-    status: {
+    album: {
+      type: String,
+      required: true
+    },
+    year: {
+      type: String,
+      required: true
+    },
+    genre: {
       type: String, //boolean, number, array, and object
-      enum: ["DRAFT", "PUBLISHED"],
-      default: "DRAFT"
+      enum: [
+        "Blues",
+        "Electronic",
+        "Hip hop",
+        "Jazz",
+        "Pop",
+        "R&B",
+        "Rock",
+        "Other"
+      ],
+      default: "Other"
+    },
+    length: {
+      type: Number, //boolean, number, array, and object
+      required: false
     }
   },
   {

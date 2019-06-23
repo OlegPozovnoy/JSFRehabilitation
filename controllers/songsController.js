@@ -7,8 +7,7 @@ exports.new = (req, res) => {
 };
 
 exports.index = (req, res) => {
-  song
-    .find()
+  Song.find()
     .then(songs => {
       res.render("songs/index", {
         songs: songs,
@@ -25,7 +24,7 @@ exports.show = (req, res) => {
     .then(song => {
       res.render("songs/show", {
         song: song,
-        title: song.title
+        title: song.name
       });
     })
     .catch(err => {
@@ -37,7 +36,7 @@ exports.edit = (req, res) => {
   Song.findById(req.params.id)
     .then(song => {
       res.render("songs/edit", {
-        title: `Edit ${song.title}`,
+        title: `Edit ${song.name}`,
         song: song
       });
     })
@@ -59,7 +58,7 @@ exports.create = (req, res) => {
 };
 
 exports.update = (req, res) => {
-  Slog.updateOne(
+  Song.updateOne(
     {
       _id: req.body.id
     },
