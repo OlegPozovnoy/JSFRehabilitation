@@ -9,7 +9,13 @@ const path = require("path");
 app.set("views", path.join(__dirname, "views"));
 app.set("view engine", "pug");
 
-const routes = require("routes");
+app.use("/css", express.static("assets/stylesheets"));
+app.use("/js", express.static("assets/javascripts"));
+app.use("/images", express.static("assets/images"));
+//console.log("app.js:");
+//console.log(app);
+
+const routes = require("./routes.js");
 app.use("/", routes);
 
 // Starting our server on port 4000
