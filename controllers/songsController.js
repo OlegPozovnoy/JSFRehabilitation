@@ -88,3 +88,64 @@ exports.destroy = (req, res) => {
       console.error(`ERROR: ${err}`);
     });
 };
+
+exports.band = (req, res) => {
+  Song.find()
+    .band(req.params.id)
+    .then(songs => {
+      res.render("songs/index", {
+        songs: songs,
+        title: req.params.id
+      });
+    })
+    .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
+      res.redirect("/");
+    });
+};
+
+exports.album = (req, res) => {
+  console.log(req.params.id);
+  Song.find()
+    .album(req.params.id)
+    .then(songs => {
+      res.render("songs/index", {
+        songs: songs,
+        title: req.params.id
+      });
+    })
+    .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
+      res.redirect("/");
+    });
+};
+
+exports.year = (req, res) => {
+  Song.find()
+    .year(req.params.id)
+    .then(songs => {
+      res.render("songs/index", {
+        songs: songs,
+        title: req.params.id
+      });
+    })
+    .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
+      res.redirect("/");
+    });
+};
+
+exports.genre = (req, res) => {
+  Song.find()
+    .genre(req.params.id)
+    .then(songs => {
+      res.render("songs/index", {
+        songs: songs,
+        title: req.params.id
+      });
+    })
+    .catch(err => {
+      req.flash("error", `ERROR: ${err}`);
+      res.redirect("/");
+    });
+};

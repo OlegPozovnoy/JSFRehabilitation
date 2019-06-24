@@ -13,15 +13,20 @@ block content
             th Year
             th Genre
             th Length
+            th
           tbody
             each song in songs
               tr
                 td
                   a(href=`/songs/${song.id}`)= song.name
-                td= song.band
-                td= song.album
-                td= song.year
-                td= song.genre
+                td
+                  a(href=`/songs/band/${song.band}`)= song.band
+                td
+                  a(href=`/songs/album/${song.album}`)= song.album
+                td
+                  a(href=`/songs/year/${song.year}`)= song.year
+                td
+                  a(href=`/songs/genre/${song.genre}`)= song.genre
                 td= song.length
                 td
                   a(href=`/songs/${song.id}/edit`) edit

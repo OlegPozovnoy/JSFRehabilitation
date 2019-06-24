@@ -2,11 +2,10 @@ extends ../layouts/main.pug
 block content
   .container
     header
-      h1= song.name
-      small= song.status.toLowerCase()
+      h3= song.name
 
     div
-      table.table.table-striped
+      table.table.table-striped.table-bordered.table-fit.center
         tbody
           tr
             td  Band

@@ -6,6 +6,11 @@ const SongsController = require("../controllers/songsController");
 router.get(`/`, SongsController.index);
 router.get(`/new`, SongsController.new);
 
+router.get(`/band/:id`, SongsController.band);
+router.get(`/album/:id`, SongsController.album);
+router.get(`/year/:id`, SongsController.year);
+router.get(`/genre/:id`, SongsController.genre);
+
 router.get(`/:id/edit`, SongsController.edit);
 router.get(`/:id`, SongsController.show);
 

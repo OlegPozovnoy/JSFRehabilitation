@@ -34,7 +34,7 @@ const SongSchema = new mongoose.Schema(
       default: "Other"
     },
     length: {
-      type: Number, //boolean, number, array, and object
+      type: String, //boolean, number, array, and object
       required: false
     }
   },
@@ -42,5 +42,29 @@ const SongSchema = new mongoose.Schema(
     timestamps: true // we want timestamps to keep track of when our blogs were created
   }
 );
+
+SongSchema.query.band = function(band) {
+  return this.where({
+    band: band
+  });
+};
+
+SongSchema.query.album = function(album) {
+  return this.where({
+    album: album
+  });
+};
+
+SongSchema.query.year = function(year) {
+  return this.where({
+    year: year
+  });
+};
+
+SongSchema.query.genre = function(genre) {
+  return this.where({
+    genre: genre
+  });
+};
 
 module.exports = mongoose.model("Song", SongSchema);

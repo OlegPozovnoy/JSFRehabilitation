@@ -15,18 +15,18 @@ form(action=(song ? `/songs/update` : "/songs"), method="POST")
     input.form-control(name="song[album]", required, value=(song ? song.album : null))
 
   .form-group
-    label Band
-    input.form-control(name="song[year]", required, value=(song ? song.year : null))
+    label Year
+    input.form-control(name="song[year]", required, type='number', value=(song ? song.year : null))
        
   .form-group
-    label Status
+    label Genre
     select.form-control(name="song[genre]", required)
       each status in ['Blues', 'Electronic', 'Hip hop', 'Jazz', 'Pop', 'R&B', 'Rock', 'Other']
         option(value=status, selected=(song && song.status === status ? true : false))= status
 
     .form-group
       label Length
-      input.form-control(name="song[length]", required, value=(song ? song.length : null))
+      input.form-control(name="song[length]", type='time', value=(song ? song.length : null))
 
   .form-group
     button.btn.btn-dark(type="submit") Submit
